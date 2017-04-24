@@ -30,6 +30,7 @@ public class CircularController {
         try {
             this.slapService.callSlap(id);
             LOGGER.info("response={}", response);
+            response = "SUCCESS";
         } catch (Exception e) {
             LOGGER.error("e={}", e);
             response = "FAILURE";
