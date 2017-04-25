@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by abin on 2017/4/24 13:12.
@@ -24,9 +25,11 @@ public class CircularController {
 
     @RequestMapping(value = "/call")
     @ResponseBody
-    public String call(String id) {
+    public String call(String id, HttpServletRequest request) {
         LOGGER.info("id={}", id);
         String response = "FAILURE";
+        String headers = request.getHeader("STATUS_INPUT");
+        LOGGER.info("id={} headers={}", id, headers);
         try {
             this.slapService.callSlap(id);
             LOGGER.info("response={}", response);
