@@ -102,11 +102,7 @@ public class RestTemplateUtil {
 
     public static String httpPost(String httpUrl, String json, Map<String, String> headers){
         HttpHeaders headersParams = new HttpHeaders();
-//        MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
-//        MediaType type = MediaType.valueOf("application/json;UTF-8");
-//        headersParams.setContentType(type);
         headersParams.setContentType(MediaType.APPLICATION_JSON);
-//        headersParams.add("Accept", MediaType.APPLICATION_JSON.toString());
         for(Iterator<Map.Entry<String, String>> iterator=headers.entrySet().iterator();iterator.hasNext();){
             Map.Entry<String, String> entry = iterator.next();
             headersParams.put(entry.getKey(), Lists.newArrayList(entry.getValue()));
