@@ -14,8 +14,9 @@ import java.util.Map;
  * circular-reference
  * com.abin.lee.circular.main.vo.response
  */
-@Getter
-@Setter
+//@Getter
+//@Setter
+@Data
 public class BaseVo {
 
     private String status;
