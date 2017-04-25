@@ -3,6 +3,7 @@ package com.abin.lee.circular.common.util;
 import com.google.common.collect.Lists;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.FormHttpMessageConverter;
@@ -98,6 +99,22 @@ public class RestTemplateUtil {
         return result;
     }
 
+
+    public static String httpPost(String httpUrl, String json, Map<String, String> headers){
+        HttpHeaders headersParams = new HttpHeaders();
+        MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
+        headersParams.setContentType(type);
+        headersParams.add("Accept", MediaType.APPLICATION_JSON.toString());
+        for(Iterator<Map.Entry<String, String>> iterator=headers.entrySet().iterator();iterator.hasNext();){
+            Map.Entry<String, String> entry = iterator.next();
+            headersParams.put(entry.getKey(), Lists.newArrayList(entry.getValue()));
+        }
+        HttpEntity<String> formEntity = new HttpEntity<String>(json, headersParams);
+        String result = restTemplate.postForObject(httpUrl, formEntity, String.class);
+        return result;
+    }
+
+    
 
     public static String httpGet(String httpUrl) {
         return restTemplate.getForObject(httpUrl, String.class, new String[]{});
