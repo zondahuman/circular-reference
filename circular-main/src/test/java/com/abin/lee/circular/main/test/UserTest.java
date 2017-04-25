@@ -31,5 +31,16 @@ public class UserTest {
         System.out.println("result="+result);
     }
 
+    @Test
+    public void testUser2(){
+        UserVo userVo = new UserVo();
+        userVo.setUserName("abin");
+        userVo.setAge(55);
+        userVo.setId(1);
+        String json = JsonUtil.toJson(userVo);
+        String result = RestTemplateUtil.getInstance().httpPost(httpUrl,json);
+        System.out.println("result="+result);
+    }
+
 
 }

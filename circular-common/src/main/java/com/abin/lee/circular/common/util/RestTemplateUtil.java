@@ -113,6 +113,15 @@ public class RestTemplateUtil {
     }
 
 
+    public static String httpPost(String httpUrl, String json){
+        HttpHeaders headersParams = new HttpHeaders();
+        headersParams.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> formEntity = new HttpEntity<String>(json, headersParams);
+        String result = restTemplate.postForObject(httpUrl, formEntity, String.class);
+        return result;
+    }
+
+
 
     public static String httpGet(String httpUrl) {
         return restTemplate.getForObject(httpUrl, String.class, new String[]{});
