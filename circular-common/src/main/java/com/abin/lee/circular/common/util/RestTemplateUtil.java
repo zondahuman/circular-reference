@@ -114,7 +114,7 @@ public class RestTemplateUtil {
         return result;
     }
 
-    
+
 
     public static String httpGet(String httpUrl) {
         return restTemplate.getForObject(httpUrl, String.class, new String[]{});
